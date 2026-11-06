@@ -1,17 +1,40 @@
+import pytest
 from hypothesis import given, strategies as st
-from house_painting_quote_parser import clean_colour_name, room_area, total_wall_area
+from house_painting_quote_parser import (
+    clean_colour_name,
+    room_area,
+    total_wall_area,
+)
+
 
 @given(st.text() | st.none())
 def test_clean_colour_name_no_crash(s):
-    # To-Do: Using try and except complete this function.
-    pass
+    try:
+        clean_colour_name(s)
+    except Exception as error:
+        pytest.fail(
+            f"clean_colour_name crashed for {s!r}: "
+            f"{type(error).__name__}: {error}"
+        )
+
 
 @given(st.text() | st.none())
 def test_room_area_no_crash(s):
-    # To-Do: Using try and except complete this function.
-    pass
+    try:
+        room_area(s)
+    except Exception as error:
+        pytest.fail(
+            f"room_area crashed for {s!r}: "
+            f"{type(error).__name__}: {error}"
+        )
+
 
 @given(st.text() | st.none())
 def test_total_wall_area_no_crash(s):
-    # To-Do: Using try and except complete this function.
-    pass
+    try:
+        total_wall_area(s)
+    except Exception as error:
+        pytest.fail(
+            f"total_wall_area crashed for {s!r}: "
+            f"{type(error).__name__}: {error}"
+        )
